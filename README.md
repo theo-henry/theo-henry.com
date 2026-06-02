@@ -2,6 +2,14 @@
 
 This is a small static portfolio site. There is no build step.
 
+Netlify deploys the preserved Framer export from:
+
+```txt
+agreeable-reservation-488504.framer.app_tostatic/
+```
+
+That publish directory is pinned in `netlify.toml` so Netlify deploys the same Framer version instead of the simplified editable root page.
+
 ## Edit Content
 
 Edit `portfolio-data.js`.
