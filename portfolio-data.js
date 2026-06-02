@@ -24,7 +24,7 @@ window.portfolioData = {
       "Docker",
       "FastAPI",
       "MLflow",
-      "Apache Spark"
+      "Apache Spark",
       "Git",
       "Agile",
       "CI/CD",
