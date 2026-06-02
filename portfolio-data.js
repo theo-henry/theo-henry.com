@@ -31,7 +31,7 @@ window.portfolioData = {
       "Docker",
       "MongoDB",
       "Jira",
-      "Confluence",
+      "Confluence"
     ],
     languages: ["English", "Spanish", "French"],
     links: [
