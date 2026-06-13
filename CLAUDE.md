@@ -8,6 +8,8 @@ Netlify publishes `agreeable-reservation-488504.framer.app_tostatic/` (see `netl
 
 The root-level `index.html`, `portfolio-data.js`, `app.js`, and `styles.css` are an **unused alternate scaffold** (a hand-rolled JS-rendered portfolio). Editing `portfolio-data.js` does NOT change what users see. Do not be fooled by its clean structure — verify against `netlify.toml` before editing.
 
+`npm run dev` (via `dev-server.mjs`) is configured to serve the Framer export folder so localhost mirrors production. If localhost shows different content from `theo-henry.com`, check that `root` in `dev-server.mjs` still points at `agreeable-reservation-488504.framer.app_tostatic`.
+
 ## Editing the live content
 
 The Framer export is a single large pre-rendered HTML file: `agreeable-reservation-488504.framer.app_tostatic/index.html` (~184 lines, ~150k tokens — too large to Read whole; use `grep`/`perl` to locate snippets, then `Edit` in place).
@@ -31,3 +33,4 @@ To find content, search the Framer HTML with `perl -ne 'while(/(needle.{0,1200})
 Add new project-specific learnings below as the user provides them. Keep entries short; prefer one bullet per lesson with date.
 
 - 2026-06-13: Confirmed the Framer static export is the live site, not the root scaffold. Root `portfolio-data.js` is dead code unless build config changes.
+- 2026-06-13: Repointed `dev-server.mjs` to serve `agreeable-reservation-488504.framer.app_tostatic/` so `npm run dev` mirrors what Netlify deploys (previously it served the dead scaffold, which made it look like edits weren't taking effect).

@@ -5,4 +5,4 @@
 [dev]
   command = "npm run dev"
   targetPort = 5173
-  publish = "."
+  publish = "agreeable-reservation-488504.framer.app_tostatic"

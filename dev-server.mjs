@@ -2,10 +2,10 @@ import { createReadStream, existsSync, statSync, watch } from "node:fs";
 import { createServer } from "node:http";
 import { extname, join, normalize, resolve } from "node:path";
 
-const root = process.cwd();
+const root = resolve(process.cwd(), "agreeable-reservation-488504.framer.app_tostatic");
 const host = process.env.HOST || "127.0.0.1";
 const port = Number(process.env.PORT || 5173);
-const reloadFiles = new Set(["index.html", "portfolio-data.js", "app.js", "styles.css"]);
+const reloadFiles = new Set(["index.html"]);
 const clients = new Set();
 
 const types = {
@@ -77,8 +77,9 @@ const server = createServer((req, res) => {
 });
 
 server.listen(port, host, () => {
-  console.log(`Editable portfolio running at http://localhost:${port}`);
-  console.log("Edit portfolio-data.js and refreshes will happen automatically.");
+  console.log(`Portfolio running at http://localhost:${port}`);
+  console.log(`Serving the Framer export from ${root}`);
+  console.log("Edits to the Framer index.html auto-reload the browser.");
 });
 
 for (const file of reloadFiles) {
