@@ -59,8 +59,8 @@ window.portfolioData = {
       title: "Intro",
       type: "text",
       paragraphs: [
-        "I'm Theo Henry, a data science student focused on technology strategy, analytics, and management consulting.",
-        "I use technical and business context together: turning ambiguous problems into structured analysis, clear decisions, and practical product or operations improvements.",
+        "I’m Theo Henry, a consultant with expertise in cybersecurity, risk management, and technology strategy. My experience across digital transformation and client delivery allows me to bring a sharp, data-driven approach to complex business problems.",
+        "Currently pursuing an MSc in Data Science & Business Analytics at IE University, I'm focused on applying data and AI to drive meaningful business outcomes, with a side interest in developing innovative and user-focused products for both web and mobile platforms, where I emphasize intuitive design and robust functionality.",
       ],
     },
     {

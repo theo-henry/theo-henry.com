@@ -2,6 +2,24 @@
 
 This is a small static portfolio site. There is no build step.
 
+## Local Preview
+
+Run the editable local site with live reload:
+
+```txt
+npm run dev
+```
+
+Then open:
+
+```txt
+http://localhost:5173
+```
+
+The local server watches `portfolio-data.js`, `app.js`, `styles.css`, and `index.html`, then reloads the browser when one of them changes.
+
+If you use `netlify dev`, the `[dev]` config also points to this editable root page. Production deploys are still configured separately below.
+
 Netlify deploys the preserved Framer export from:
 
 ```txt
