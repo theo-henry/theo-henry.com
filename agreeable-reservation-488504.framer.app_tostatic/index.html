@@ -182,5 +182,47 @@
     <!-- End of bodyEnd -->
 <script>fetch("https://tostatic.app/fns/pixel/7a26e106937f3b0f22b619ed614081c0fb5686c7?origin="+encodeURIComponent(window.location.href), {headers: {'X-Site-Origin': window.location.href}});</script><style id="static-scroll-fade">@keyframes static-scroll-fade-in{from{opacity:0;transform:translateY(18px) scale(0.97)}to{opacity:1;transform:none}}[data-scroll-fade="1"]{opacity:0;transform:translateY(18px) scale(0.97);transition:none}[data-scroll-fade="1"].is-in-view{animation:static-scroll-fade-in 0.65s cubic-bezier(0.22,0.61,0.36,1) both}@media (prefers-reduced-motion:reduce){[data-scroll-fade="1"]{opacity:1;transform:none}[data-scroll-fade="1"].is-in-view{animation:none}}</style>
 <script id="static-scroll-fade-js">(function(){var els=document.querySelectorAll('[data-scroll-fade="1"]');if(!els.length)return;if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('is-in-view')});return}var io=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-in-view');io.unobserve(entry.target)}})},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});els.forEach(function(el){io.observe(el)})})();</script>
+<style id="static-projects-carousel">
+  /* Desktop projects carousel: clip the wide strip and hint horizontal navigation. */
+  .framer-Hvjf5.framer-ctvmro{overflow:hidden!important}
+  .framer-Hvjf5.framer-ctvmro,.framer-Hvjf5.framer-ctvmro *{cursor:pointer}
+  .framer-Hvjf5 .framer-13nnoaa{transition:transform 0.55s cubic-bezier(0.22,0.61,0.36,1);will-change:transform}
+  /* Override Framer's hover-only cursor swap regions so the e-resize / w-resize hint comes through. */
+  .framer-Hvjf5 .framer-1q3g4sg{cursor:e-resize!important}
+  .framer-Hvjf5 .framer-fcp4ur{cursor:w-resize!important}
+</style>
+<script id="static-projects-carousel-js">(function(){
+  var viewport = document.querySelector('.framer-Hvjf5.framer-ctvmro');
+  var strip = document.querySelector('.framer-Hvjf5 .framer-13nnoaa');
+  if(!viewport||!strip) return;
+  var step = 0;          /* current step index, 0..maxStep */
+  var cardStep = 536;    /* card width (520) + gap (16) */
+  function update(){
+    var max = Math.max(0, strip.scrollWidth - viewport.clientWidth);
+    var offset = Math.min(step * cardStep, max);
+    strip.style.transform = 'translateY(-50%) translateX(' + (-offset) + 'px)';
+  }
+  function maxStep(){
+    var max = Math.max(0, strip.scrollWidth - viewport.clientWidth);
+    return Math.ceil(max / cardStep);
+  }
+  viewport.addEventListener('click', function(e){
+    /* Don't intercept clicks on project anchors / interactive children. */
+    if (e.target.closest && e.target.closest('a[href]')) return;
+    var rect = viewport.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    if (x > rect.width/2) { step = Math.min(maxStep(), step + 1); }
+    else                  { step = Math.max(0, step - 1); }
+    update();
+  });
+  /* Keyboard nav: left/right arrows when carousel is focused. */
+  viewport.setAttribute('tabindex','0');
+  viewport.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight'){ step = Math.min(maxStep(), step+1); update(); }
+    else if (e.key === 'ArrowLeft'){ step = Math.max(0, step-1); update(); }
+  });
+  /* Recompute on resize so the bounds stay correct. */
+  window.addEventListener('resize', update);
+})();</script>
 </body>
 </html>
