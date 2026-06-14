@@ -30,8 +30,8 @@
     <meta name="description" content="Resumx is a one-page resume template for Framer, designed for professionals. It's customizable, flexible, and easy to style, allowing skills, experience, and achievements to be showcased in a visually stunning and organized way.">
     <meta name="framer-search-index" content="https://framerusercontent.com/sites/1RtVoZn0dgDJeZrIq6ynQL/searchIndex-yM2pUso9A9eP.json">
     <meta name="framer-html-plugin" content="disable">
-    <link href="https://framerusercontent.com/images/9ZqTC8IND73Nls4sR5japXUKjq0.png" rel="icon" media="(prefers-color-scheme: light)">
-    <link href="https://framerusercontent.com/images/9ZqTC8IND73Nls4sR5japXUKjq0.png" rel="icon" media="(prefers-color-scheme: dark)">
+    <link href="../favicon.svg" rel="icon" type="image/svg+xml" media="(prefers-color-scheme: light)">
+    <link href="../favicon.svg" rel="icon" type="image/svg+xml" media="(prefers-color-scheme: dark)">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Resumx">
@@ -301,12 +301,16 @@
 .pm-slide{flex:0 0 auto;width:min(420px, 80%);height:240px;border-radius:10px;background-position:center;background-size:cover;background-repeat:no-repeat;border:1px solid rgba(18,18,18,0.06);scroll-snap-align:start;cursor:pointer;transition:transform 150ms ease}
 .pm-slide:hover{transform:scale(1.01)}
 body.pm-open{overflow:hidden}
-/* Card popup-click area uses normal pointer (signals popup); Framer's Left/Right nav overlays keep the arrow cursor.
-   Specificity needs to beat Framer's `.framer-Hvjf5.framer-ctvmro *{cursor:none!important}` (0,2,0). */
-.framer-Hvjf5 a[data-project-modal],
-.framer-Hvjf5 a[data-project-modal] *{cursor:pointer!important}
-/* Hide Framer's custom-cursor SVG while the mouse is over the popup-click area */
-body.pm-on-card div#static-custom-cursor{display:none!important}
+/* On the card's popup-click area, keep Framer's circle cursor visible but make it darker/larger
+   to signal "click to open popup" (distinct from the carousel-arrow variant on the Left/Right zones). */
+body.pm-on-card div#static-custom-cursor{
+  width:38px!important;
+  height:38px!important;
+  background:rgba(0,0,0,0.55)!important;
+  border-color:rgba(255,255,255,0.95)!important;
+  mix-blend-mode:normal!important;
+}
+body.pm-on-card div#static-custom-cursor:after{opacity:0!important}
 @media (max-width:540px){
   #project-modal-overlay{padding:24px 12px}
   .pm-header,.pm-body,.pm-footer{padding-left:20px;padding-right:20px}
