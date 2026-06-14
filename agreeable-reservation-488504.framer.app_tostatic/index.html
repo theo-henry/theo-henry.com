@@ -182,16 +182,54 @@
     <!-- End of bodyEnd -->
 <script>fetch("https://tostatic.app/fns/pixel/7a26e106937f3b0f22b619ed614081c0fb5686c7?origin="+encodeURIComponent(window.location.href), {headers: {'X-Site-Origin': window.location.href}});</script><style id="static-scroll-fade">@keyframes static-scroll-fade-in{from{opacity:0;transform:translateY(18px) scale(0.97)}to{opacity:1;transform:none}}[data-scroll-fade="1"]{opacity:0;transform:translateY(18px) scale(0.97);transition:none}[data-scroll-fade="1"].is-in-view{animation:static-scroll-fade-in 0.65s cubic-bezier(0.22,0.61,0.36,1) both}@media (prefers-reduced-motion:reduce){[data-scroll-fade="1"]{opacity:1;transform:none}[data-scroll-fade="1"].is-in-view{animation:none}}@keyframes star-fill-pop{0%{opacity:0;transform:scale(0.4)}55%{opacity:1;transform:scale(1.2)}80%{transform:scale(0.95)}100%{opacity:1;transform:scale(1)}}[data-scroll-fade="1"].is-in-view [data-framer-name="Animated – Static"]>div [data-framer-name="Filled"][data-framer-component-type="SVG"]{animation:star-fill-pop 0.55s cubic-bezier(0.34,1.56,0.64,1) both;transform-origin:center}[data-scroll-fade="1"].is-in-view [data-framer-name="Animated – Static"]>div:nth-of-type(1) [data-framer-name="Filled"]{animation-delay:0.18s}[data-scroll-fade="1"].is-in-view [data-framer-name="Animated – Static"]>div:nth-of-type(2) [data-framer-name="Filled"]{animation-delay:0.30s}[data-scroll-fade="1"].is-in-view [data-framer-name="Animated – Static"]>div:nth-of-type(3) [data-framer-name="Filled"]{animation-delay:0.42s}[data-scroll-fade="1"].is-in-view [data-framer-name="Animated – Static"]>div:nth-of-type(4) [data-framer-name="Filled"]{animation-delay:0.54s}[data-scroll-fade="1"].is-in-view [data-framer-name="Animated – Static"]>div:nth-of-type(5) [data-framer-name="Filled"]{animation-delay:0.66s}@media (prefers-reduced-motion:reduce){[data-scroll-fade="1"].is-in-view [data-framer-name="Animated – Static"]>div [data-framer-name="Filled"][data-framer-component-type="SVG"]{animation:none;opacity:1}}</style>
 <style id="static-testimonial-stars">.framer-d4AIE [data-framer-name="Filled"][data-framer-component-type="SVG"]{inset:2px 1px 1px!important}</style>
+<style id="static-contact-overrides">#contact .framer-1ylo3b4-container,#contact .framer-52hqub{display:none!important}</style>
+<script id="static-contact-overrides-js">(function(){var email="theo.henry003@gmail.com";var booking="mailto:"+email+"?subject="+encodeURIComponent("Booking a call")+"&body="+encodeURIComponent("Hi Theo,\n\nI'd like to book a call.\n\nBest,");var updates={Email:{href:"mailto:"+email,value:email},Phone:{href:"tel:+34641982114",value:"+34 641 982 114"},Website:{href:"https://theo-henry.com",value:"theo-henry.com",external:true},Meeting:{href:booking,value:"Book call"},LinkedIn:{href:"https://www.linkedin.com/in/theohenry1/",value:"/theohenry1",external:true}};function isBorder(el){return el&&el.getAttribute&&el.getAttribute("data-framer-name")==="Border"}function patch(){document.querySelectorAll('#contact a[data-framer-name="Default"]').forEach(function(link){var ps=link.querySelectorAll("p");if(ps.length<2)return;var label=ps[0].textContent.trim();if(label==="X (Twitter)"){var row=link.closest('[data-scroll-fade="1"]')||link.parentElement;if(row){if(isBorder(row.nextElementSibling))row.nextElementSibling.remove();else if(isBorder(row.previousElementSibling))row.previousElementSibling.remove();row.remove()}return}var update=updates[label];if(!update)return;link.setAttribute("href",update.href);if(update.external){link.setAttribute("target","_blank");link.setAttribute("rel","noopener")}else{link.removeAttribute("target");link.removeAttribute("rel")}ps[1].textContent=update.value});document.querySelectorAll('[data-framer-name="LinkedIn"][href]').forEach(function(link){link.setAttribute("href","https://www.linkedin.com/in/theohenry1/");link.setAttribute("target","_blank");link.setAttribute("rel","noopener")})}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",patch);else patch()})();</script>
 <script id="static-scroll-fade-js">(function(){var els=document.querySelectorAll('[data-scroll-fade="1"]');if(!els.length)return;if(!('IntersectionObserver' in window)){els.forEach(function(el){el.classList.add('is-in-view')});return}var io=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-in-view');io.unobserve(entry.target)}})},{threshold:0.12,rootMargin:'0px 0px -8% 0px'});els.forEach(function(el){io.observe(el)})})();</script>
 <style id="static-projects-carousel">
   /* Desktop projects carousel: clip the wide strip and hint horizontal navigation. */
   .framer-Hvjf5.framer-ctvmro{overflow:hidden!important}
-  .framer-Hvjf5.framer-ctvmro,.framer-Hvjf5.framer-ctvmro *{cursor:pointer}
+  .framer-Hvjf5.framer-ctvmro,.framer-Hvjf5.framer-ctvmro *{cursor:none!important}
   .framer-Hvjf5 .framer-13nnoaa{transition:transform 0.55s cubic-bezier(0.22,0.61,0.36,1);will-change:transform}
   /* Override Framer's hover-only cursor swap regions so the e-resize / w-resize hint comes through. */
-  .framer-Hvjf5 .framer-1q3g4sg{cursor:e-resize!important}
-  .framer-Hvjf5 .framer-fcp4ur{cursor:w-resize!important}
+  .framer-Hvjf5 .framer-1q3g4sg,.framer-Hvjf5 .framer-fcp4ur{cursor:none!important}
 </style>
+<style id="static-custom-cursor">
+  @media (hover:hover) and (pointer:fine){
+    html.static-custom-cursor-ready,html.static-custom-cursor-ready *{cursor:none!important}
+    #static-custom-cursor{position:fixed;left:0;top:0;width:22px;height:22px;border:1px solid rgba(255,255,255,.7);border-radius:50%;background:rgba(255,255,255,.12);box-shadow:0 0 0 1px rgba(0,0,0,.08),0 10px 32px rgba(0,0,0,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);mix-blend-mode:difference;pointer-events:none;z-index:2147483647;opacity:0;transform:translate3d(-50%,-50%,0) scale(.9);transition:opacity .18s ease,width .18s ease,height .18s ease,background-color .18s ease,border-color .18s ease,transform .08s linear}
+    #static-custom-cursor.is-visible{opacity:1}
+    #static-custom-cursor.is-link{width:30px;height:30px;background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.82)}
+    #static-custom-cursor.is-project{width:42px;height:42px;background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.9)}
+    #static-custom-cursor:after{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;border-top:2px solid #fff;border-right:2px solid #fff;opacity:0;transform:translate(-50%,-50%) rotate(45deg);transition:opacity .16s ease,transform .16s ease}
+    #static-custom-cursor.is-project:after{opacity:1}
+    #static-custom-cursor.is-left:after{transform:translate(-40%,-50%) rotate(225deg)}
+    #static-custom-cursor.is-right:after{transform:translate(-60%,-50%) rotate(45deg)}
+  }
+</style>
+<script id="static-custom-cursor-js">(function(){
+  if(!window.matchMedia||!window.matchMedia("(hover:hover) and (pointer:fine)").matches)return;
+  var cursor=document.createElement("div");
+  cursor.id="static-custom-cursor";
+  cursor.setAttribute("aria-hidden","true");
+  document.documentElement.classList.add("static-custom-cursor-ready");
+  document.body.appendChild(cursor);
+  function setState(e){
+    var target=e.target;
+    var viewport=target.closest&&target.closest(".framer-Hvjf5.framer-ctvmro");
+    cursor.classList.toggle("is-link",!!(target.closest&&target.closest("a,button,[role='button']")));
+    cursor.classList.toggle("is-project",!!viewport);
+    cursor.classList.remove("is-left","is-right");
+    if(viewport){
+      var rect=viewport.getBoundingClientRect();
+      cursor.classList.add(e.clientX-rect.left<rect.width/2?"is-left":"is-right");
+    }
+    cursor.style.left=e.clientX+"px";
+    cursor.style.top=e.clientY+"px";
+    cursor.classList.add("is-visible");
+  }
+  document.addEventListener("mousemove",setState,{passive:true});
+  document.addEventListener("mouseleave",function(){cursor.classList.remove("is-visible")});
+})();</script>
 <script id="static-projects-carousel-js">(function(){
   var viewport = document.querySelector('.framer-Hvjf5.framer-ctvmro');
   var strip = document.querySelector('.framer-Hvjf5 .framer-13nnoaa');
