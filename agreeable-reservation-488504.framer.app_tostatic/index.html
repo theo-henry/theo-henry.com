@@ -301,6 +301,12 @@
 .pm-slide{flex:0 0 auto;width:min(420px, 80%);height:240px;border-radius:10px;background-position:center;background-size:cover;background-repeat:no-repeat;border:1px solid rgba(18,18,18,0.06);scroll-snap-align:start;cursor:pointer;transition:transform 150ms ease}
 .pm-slide:hover{transform:scale(1.01)}
 body.pm-open{overflow:hidden}
+/* Card popup-click area uses normal pointer (signals popup); Framer's Left/Right nav overlays keep the arrow cursor.
+   Specificity needs to beat Framer's `.framer-Hvjf5.framer-ctvmro *{cursor:none!important}` (0,2,0). */
+.framer-Hvjf5 a[data-project-modal],
+.framer-Hvjf5 a[data-project-modal] *{cursor:pointer!important}
+/* Hide Framer's custom-cursor SVG while the mouse is over the popup-click area */
+body.pm-on-card div#static-custom-cursor{display:none!important}
 @media (max-width:540px){
   #project-modal-overlay{padding:24px 12px}
   .pm-header,.pm-body,.pm-footer{padding-left:20px;padding-right:20px}
@@ -466,6 +472,137 @@ body.pm-open{overflow:hidden}
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && overlay.classList.contains('open')) close();
   });
+
+  // Hide Framer's custom-cursor SVG when the mouse is over a card's popup-click area.
+  // The Left/Right nav overlays are siblings of the card (not descendants), so hovering
+  // them removes the body class and the arrow cursor returns.
+  document.addEventListener('mouseover', function(e){
+    var onCard = !!(e.target && e.target.closest && e.target.closest('a[data-project-modal]'));
+    if (onCard) document.body.classList.add('pm-on-card');
+    else document.body.classList.remove('pm-on-card');
+  });
+})();
+</script>
+<script>
+// Looping projects carousel. Framer's static export ships the cards and the
+// Left/Right cursor zones but not the JS that actually advances them — this
+// reinstates click-to-navigate and wraps from the last project back to the first.
+(function(){
+  function init(){
+    var track = document.querySelector('.framer-13nnoaa');
+    if (!track) return;
+    var slides = Array.prototype.filter.call(track.children, function(c){
+      return c.classList && c.classList.contains('framer-slfuzb');
+    });
+    if (slides.length < 2) return;
+
+    var rightNav = document.querySelector('.framer-1q3g4sg');
+    var leftNav = document.querySelector('.framer-fcp4ur');
+    if (!rightNav && !leftNav) return;
+
+    var n = slides.length;
+    var rect0 = slides[0].getBoundingClientRect();
+    var rect1 = slides[1].getBoundingClientRect();
+    var spacing = rect1.x - rect0.x;
+    if (!isFinite(spacing) || spacing <= 0) spacing = rect0.width || 520;
+
+    var idx = 0;
+    var animating = false;
+    var anim = 'transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1)';
+    var trackTransformY = ', -177)';
+
+    function setX(x, animate){
+      track.style.transition = animate ? anim : 'none';
+      track.style.transform = 'matrix(1, 0, 0, 1, ' + x + trackTransformY;
+    }
+
+    function snapshotY(){
+      var t = window.getComputedStyle(track).transform;
+      var m = /matrix\(([^)]+)\)/.exec(t);
+      if (m){
+        var parts = m[1].split(',').map(function(s){return s.trim()});
+        if (parts.length === 6){
+          trackTransformY = ', ' + parts[5] + ')';
+        }
+      }
+    }
+    snapshotY();
+
+    function goNext(){
+      if (animating) return;
+      animating = true;
+      if (idx < n - 1){
+        idx++;
+        setX(-idx * spacing, true);
+        setTimeout(function(){ animating = false; }, 580);
+      } else {
+        // Wrap forward: clone slide 0, animate to the clone, then snap back to slide 0.
+        var clone = slides[0].cloneNode(true);
+        clone.setAttribute('data-carousel-clone', '1');
+        track.appendChild(clone);
+        // Animate past the last slide to the clone
+        setX(-n * spacing, true);
+        setTimeout(function(){
+          setX(0, false);
+          if (clone.parentElement === track) track.removeChild(clone);
+          idx = 0;
+          animating = false;
+        }, 580);
+      }
+    }
+
+    function goPrev(){
+      if (animating) return;
+      animating = true;
+      if (idx > 0){
+        idx--;
+        setX(-idx * spacing, true);
+        setTimeout(function(){ animating = false; }, 580);
+      } else {
+        // Wrap backward: prepend clone of last slide, hold view on slide 0, then animate to clone.
+        var clone = slides[n - 1].cloneNode(true);
+        clone.setAttribute('data-carousel-clone', '1');
+        track.insertBefore(clone, slides[0]);
+        // After insertion, slide 0 visually shifted right by `spacing`.
+        // Set translateX so the user still sees slide 0 (no visible jump):
+        setX(-spacing, false);
+        // Next frame, animate to translateX=0 to bring the clone into view from the left.
+        requestAnimationFrame(function(){
+          requestAnimationFrame(function(){
+            setX(0, true);
+            setTimeout(function(){
+              if (clone.parentElement === track) track.removeChild(clone);
+              idx = n - 1;
+              setX(-idx * spacing, false);
+              animating = false;
+            }, 580);
+          });
+        });
+      }
+    }
+
+    // Capture-phase listeners so Framer's residual handlers (if any) don't double-fire.
+    if (rightNav){
+      rightNav.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        goNext();
+      }, true);
+    }
+    if (leftNav){
+      leftNav.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        goPrev();
+      }, true);
+    }
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
 </script>
 </body>
