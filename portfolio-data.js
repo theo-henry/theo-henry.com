@@ -156,12 +156,14 @@ window.portfolioData = {
       type: "list",
       items: [
         {
-          title: "Alpha Certified Developer Associate",
-          meta: "Issued 2019",
+          title: "Bloomberg Market Concepts",
+          meta: "Issued 2025",
+          logo: "logos/bloomberg_certification.jpeg",
         },
         {
-          title: "Beta Certified Developer Associate",
-          meta: "Issued 2023",
+          title: "Celonis Data Engineer",
+          meta: "Issued 2026",
+          logo: "logos/celonis_certification.png",
         },
       ],
     },
@@ -171,16 +173,22 @@ window.portfolioData = {
       type: "testimonials",
       items: [
         {
-          name: "Evelyn Brooks",
-          role: "Lead Engineer at Sigma, managed Henry directly",
+          name: "Kayzeen Kepadia",
+          role: "Manager at Accenture, managed Theo directly",
+          rating: 5,
+          headshot: "logos/kayzeen_kepadia.jpeg",
+          companyLogo: "logos/accenture_logo.jpeg",
           quote:
-            "Having worked alongside Henry at Sigma, I've been consistently impressed by his exceptional skills as a frontend engineer. Henry's hands-on approach and dedication to building robust web and mobile applications have greatly contributed to our project's success.",
+            "Theo consistently demonstrated an exceptional level of sharpness and attention to detail throughout his time on our team. His ability to break down complex AI adoption challenges into precise, actionable deliverables made him a standout contributor to our engagement with a major client.",
         },
         {
-          name: "Raj Patel",
-          role: "Junior Software Engineer at Omega, worked with Henry on the same team",
+          name: "Mathieu Gendron",
+          role: "Manager at KPMG, managed Theo directly",
+          rating: 5,
+          headshot: "logos/mathieu_gendron.jpeg",
+          companyLogo: "logos/KPMG_logo.jpeg",
           quote:
-            "Henry's expertise has been crucial in turning our ambitious project ideas into reality at Omega. His proficiency in both front-end and back-end development ensures a seamless integration of features, delivering a user experience that's both intuitive and high-performing.",
+            "Working with Theo was a great experience. He's thorough, reliable, and brings a creative edge that elevated the quality of our project deliverables. His ability to turn raw data into compelling executive-level insights was extremely impressive for someone at his level.",
         },
       ],
     },
