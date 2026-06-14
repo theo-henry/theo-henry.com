@@ -131,20 +131,22 @@ window.portfolioData = {
       type: "timeline",
       items: [
         {
-          title: "Master of Science in Computer Science",
-          period: "Sep 18 - Jun 20",
-          organization: "Astra University",
-          location: "Stanford, CA",
+          title: "Master's in Data Science & Business Analytics",
+          period: "Sep 25 - Jul 26",
+          organization: "IE University",
+          location: "Madrid, Spain",
+          logo: "logos/ie_university_logo.jpeg",
           description:
-            'Placeholder from the old Framer template. Specialized in Software Engineering and completed thesis on "Scalable Architectures for Real-Time Web Applications".',
+            "Advanced AI Concentration. Consulting Director at 180Degrees Consulting Madrid and Special Projects Lead at IE Consulting Club.",
         },
         {
-          title: "Bachelor of Science in Software Engineering",
-          period: "Sep 15 - Sep 18",
-          organization: "Nova University",
-          location: "Providence, RI",
+          title: "Bachelor of Commerce, International Business",
+          period: "Sep 21 - Apr 25",
+          organization: "Concordia University, John Molson School of Business",
+          location: "Montreal, Canada",
+          logo: "logos/concordia_logo.jpeg",
           description:
-            "Placeholder from the old Framer template. Relevant coursework included Advanced Algorithms, Web Development, and User Interface Design.",
+            "Beta Gamma Sigma Honor Society (top 5%) and Golden Key International Society (top 15%). Received the CASA & Molson Bursary for outstanding leadership and involvement.",
         },
       ],
     },
