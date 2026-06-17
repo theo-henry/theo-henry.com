@@ -203,8 +203,8 @@
   /* Subtle navigation hint: soft gradient + cursor-style chevron on each side of the hero image.
      Sits inside the viewport (clipped by overflow:hidden) and stops above the title/avatar bar. */
   .framer-static-nav-hint{position:absolute;top:8px;bottom:80px;width:72px;pointer-events:none;z-index:2;display:flex;align-items:center;opacity:0.55;transition:opacity .25s ease}
-  .framer-static-nav-hint.is-left{left:8px;justify-content:flex-start;padding-left:12px;background:linear-gradient(to right,rgba(18,18,18,0.20),rgba(18,18,18,0))}
-  .framer-static-nav-hint.is-right{right:8px;justify-content:flex-end;padding-right:12px;background:linear-gradient(to left,rgba(18,18,18,0.20),rgba(18,18,18,0))}
+  .framer-static-nav-hint.is-left{left:8px;justify-content:flex-start;padding-left:12px}
+  .framer-static-nav-hint.is-right{right:8px;justify-content:flex-end;padding-right:12px}
   .framer-static-nav-hint:before{content:"";display:block;width:12px;height:12px;border-top:2px solid #fff;border-right:2px solid #fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.4))}
   .framer-static-nav-hint.is-left:before{transform:rotate(225deg)}
   .framer-static-nav-hint.is-right:before{transform:rotate(45deg)}
